@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual AI Voice Assistant - Government Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="header">
+            <div class="header-icon">🏛️</div>
+            <div>
+                <h1>Multilingual AI Voice Assistant</h1>
+                <p class="subtitle">
+                    Voice & Text Assistant for Government Services & Schemes
+                </p>
+            </div>
+        </header>
+
+        <div class="top-bar">
+            <div class="badge-group">
+                <span class="chip-badge">🎙️ Voice Enabled</span>
+                <span class="chip-badge">⚡ Faster-Whisper</span>
+                <span class="chip-badge">🌐 3 Languages</span>
+            </div>
+
+            <div class="language-section">
+                <label for="language">Select Language:</label>
+                <select id="language" onchange="onLanguageChange()">
+                    <option value="en">English (India)</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="mr">मराठी (Marathi)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Recording & System Status Display -->
+        <div id="status-bar" class="status-bar status-ready">
+            <span class="status-pulse" id="status-pulse"></span>
+            <span id="status-icon" class="status-icon">🎙️</span>
+            <span id="status-text" class="status-text">Ready &bull; Click 🎤 to speak in English, Hindi, or Marathi</span>
+            <span id="recording-timer" class="recording-timer" style="display: none;">00:00</span>
+        </div>
+
+        <!-- Error / Notification Banner -->
+        <div id="error-banner" class="error-banner" style="display: none;">
+            <span id="error-message"></span>
+            <button class="banner-close" onclick="closeErrorBanner()">✕</button>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="chat-box" id="chat-box">
+            <div id="messages">
+                <div class="bot-message" id="welcome-msg">
+                    <div class="message-content">
+                        <strong>Namaskar! / Welcome! 🙏</strong><br>
+                        I am your Multilingual Government Assistant. You can speak to me or type your question about Aadhaar, PAN Card, Ration Card, Income Certificate, Caste Certificate, Driving Licence, Birth Certificate, Pensions, or Government Schemes.
+                    </div>
+                    <div class="message-actions">
+                        <button class="speaker-btn" title="Listen to welcome message" onclick="replayWelcome()">🔊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick suggestion pills for easy voice/text testing -->
+        <div class="quick-chips">
+            <span class="chips-label">Quick topics:</span>
+            <button class="chip-btn" onclick="askQuickTopic('Aadhaar card update process')">Aadhaar Card</button>
+            <button class="chip-btn" onclick="askQuickTopic('PAN card application')">PAN Card</button>
+            <button class="chip-btn" onclick="askQuickTopic('Income certificate documents')">Income Certificate</button>
+            <button class="chip-btn" onclick="askQuickTopic('Ration card application')">Ration Card</button>
+            <button class="chip-btn" onclick="askQuickTopic('Driving licence procedure')">Driving Licence</button>
+        </div>
+
+        <!-- Input Section with text and microphone button -->
+        <div class="input-section">
+            <input
+                type="text"
+                id="question"
+                placeholder="Ask your question or click 🎤 to speak..."
+                autocomplete="off"
+            >
+
+            <button id="send-btn" onclick="sendQuestion()" title="Submit written question">
+                Ask
+            </button>
+
+            <button id="mic-btn" onclick="toggleVoiceRecording()" title="Click to record voice with microphone">
+                <span class="mic-icon">🎤</span>
+                <span class="mic-text">Speak</span>
+            </button>
+        </div>
+
+        <footer class="footer-note">
+            <span>Powered by Faster-Whisper AI Speech Recognition & Neural TTS</span>
+        </footer>
+
+    </div>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
